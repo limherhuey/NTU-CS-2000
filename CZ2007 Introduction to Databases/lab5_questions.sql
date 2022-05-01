@@ -1,4 +1,9 @@
--- 1
+/*
+1.
+Frequent shoppers are shoppers who have purchased more than 2 items per shop for at least 5 shops
+in the last 30 days. Who are the top 3 frequent shoppers in terms of the total cost of the items
+they have purchased?
+*/
 WITH USERS_SHOPS_NUM_ORDERS_PAST_MONTH AS (
     SELECT O.UserID, PO.SName, SUM(PO.OQuantity) AS ItemsBought
     FROM PRODUCTS_IN_ORDERS AS PO
@@ -8,14 +13,12 @@ WITH USERS_SHOPS_NUM_ORDERS_PAST_MONTH AS (
     GROUP BY O.UserID, SName
     HAVING SUM(PO.OQuantity) > 2
 ),
-
 FREQUENT_SHOPPERS AS (
     SELECT Sub.UserID, COUNT(Sub.SName) AS NumShops
     FROM USERS_SHOPS_NUM_ORDERS_PAST_MONTH AS Sub
     GROUP BY Sub.UserID
     HAVING COUNT(Sub.SName) >= 5
 )
-
 SELECT TOP 3 FQ.UserID, SUM(PO.OPrice * PO.OQuantity) AS TotalCost
 FROM FREQUENT_SHOPPERS AS FQ
     INNER JOIN ORDERS AS O
@@ -25,7 +28,11 @@ FROM FREQUENT_SHOPPERS AS FQ
 GROUP BY FQ.UserID
 ORDER BY SUM(PO.OPrice * PO.OQuantity) DESC
 
--- 2
+/*
+2.
+Popular shops are shops which have sold more than 3 items in the last 30 days. Who are the top 3
+shoppers in these popular shops in terms of the number of items they have purchased?
+*/
 SELECT TOP 3 ORDERS.UserID, SUM(P2.OQuantity) AS items_bought
 FROM PRODUCTS_IN_ORDERS AS P2
 JOIN ORDERS ON P2.OrderID = ORDERS.OrderID

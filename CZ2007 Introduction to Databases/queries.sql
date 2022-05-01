@@ -193,6 +193,7 @@ AND (
     )
 )
 
+-- Query 10 and onwards are additional queries.
 /*
 Query 10
 Find the number of complaints each employee has addressed and select the top 3 employees
