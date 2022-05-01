@@ -10,3 +10,4 @@ With that said, let's dive right in! More details are provided in the README fil
 ## Table of Contents
 * [CZ2101](CZ2101%20Algorithm%20Design%20&%20Analysis/) - Algorithm Design & Analysis
 * [CZ2002](CZ2002%20Object%20Oriented%20Design%20&%20Programming/) - Object Oriented Design & Programming
+* [CZ2007](CZ2007%20Introduction%20to%20Databases/) - CZ2007 Introduction to Databases
